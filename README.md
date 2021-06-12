@@ -52,7 +52,7 @@ public enum JSEN : Equatable {
 
 That's it.
 
-###### `ExpressibleBy…Literal`
+### `ExpressibleBy…Literal`
 
 Now that you're familiar with JSEN, it provides a few syntactic sugary utilities, such as conformance to most `ExpressibleBy…Literal` protocols:
 
@@ -87,7 +87,7 @@ Enters the…
 
 ```swift
 let request: [String:JSEN] = [
-"amount": %normalizedAmount // This works!
+    "amount": %normalizedAmount // This works!
 ]
 ```
 
