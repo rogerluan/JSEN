@@ -2,7 +2,7 @@
 
 <p>
   <a href="https://github.com/rogerluan/JSEN/actions/workflows/run_tests.yml">
-    <img src="https://github.com/rogerluan/JSEN/workflows/run_tests/badge.svg" alt="GitHub Action Build Status" />
+    <img src="https://github.com/rogerluan/JSEN/workflows/Run%20Tests/badge.svg" alt="GitHub Action Build Status" />
   </a>
   <a href="https://swift.org">
     <img src="https://img.shields.io/badge/Swift-5.4-F05138?logo=swift&logoColor=white" alt="Swift 5.4" />
