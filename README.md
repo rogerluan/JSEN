@@ -1,5 +1,19 @@
 # JSEN
 
+<p>
+  <a href="/actions?query=workflow%3Arun_tests">
+    <img src="/workflows/run_tests/badge.svg" alt="GitHub Action Build Status" />
+  </a>
+  <a href="https://swift.org">
+    <img src="https://img.shields.io/badge/Swift-5.4-F05138?logo=swift&logoColor=white" alt="Swift 5.4" />
+  </a>
+  <img src="https://img.shields.io/static/v1?label=Platforms&message=iOS%20|%20macOS%20|%20tvOS%20|%20watchOS%20|%20Ubuntu%20&color=brightgreen" alt="Supports iOS, macOS, tvOS, watchOS and Ubuntu" />
+
+  <a href="releases/latest">
+    <img src="https://img.shields.io/github/v/release/rogerluan/JSEN?sort=semver" alt="Latest release" />
+  </a>
+</p>
+
 > _/ˈdʒeɪsən/ JAY-sən_
 
 JSEN (JSON Swift Enum Notation) is a lightweight enum representation of a JSON, written in Swift.
