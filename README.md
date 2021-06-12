@@ -105,11 +105,15 @@ To illustrate the possible problems around an `%optionalValue` operation, pictur
 let request: [String:JSEN] = [
     "middle_name": %optionalString
 ]
-
-network.put(request)
+network.post(path: "user", parameters: request)
+network.put(path: "user", parameters: request)
+network.patch(path: "user", parameters: request)
+network.mergePatch(path: "user", parameters: request)
 ```
 
-Now, if the `%` operator detected a nonnull String, great. But if it detected its underlying value to be `.none` (aka `nil`), it would convert the value to `.null`, which, when encoded, would be converted to `NSNull()` (more on this below in the Codable section). As you imagine, `NSNull()` and `nil` have very different behaviors when it comes to RESTful APIs - the former might delete the key information on the database, while the latter will simply be ignored by Swift Dictionary (as if the field wasn't even there).
+In the scenarios above, what do you think should be the RESTful expected behavior?
+
+If the `%` operator detected a nonnull String, great. But if it detected its underlying value to be `.none` (aka `nil`), it would convert the value to `.null`, which, when encoded, would be converted to `NSNull()` (more on this below in the Codable section). As you imagine, `NSNull()` and `nil` have very different behaviors when it comes to RESTful APIs - the former might delete the key information on the database, while the latter will simply be ignored by Swift Dictionary (as if the field wasn't even there).
 
 Hence, if you want to use an optional value, make the call explicit by using either `.null` if you know the value must be encoded into a `NSNull()` instance, or unwrap its value and wrap it around one of the non-null JSEN cases.
 
@@ -118,7 +122,7 @@ Hence, if you want to use an optional value, make the call explicit by using eit
 
 ### Conformance to Codable
 
-Of course! We couldn't miss this. JSEN has native support to `Encodable & Decodable` (aka `Codable`), so you can easily parse JSEN to/from JSON-like structures.
+Of course! We couldn't miss this. JSEN has native support to `Encodable & Decodable` (aka `Codable`), so you can easily parse JSEN to/from JSON-like structures. Each case is mapped to its respective value type, and `.null` maps to a `NSNull()` instance (which, in a JSON, is represented by `null`).
 
 One additional utility was added as well, which's the `decode(as:)` function. It receives a Decodable-conformant Type as parameter and will attempt to decode the JSEN value into the given type using a two-pass strategy:
 - First, it encodes the JSEN to `Data`, and attempts to decode that `Data` into the given type.
@@ -143,7 +147,7 @@ let request: [String:JSEN] = [
 print(request[keyPath: "1st.2nd.3rd"]) // "Hello!"
 ```
 
-Without this syntax, to access a nested value in a dictionary you'd have to create multiple chains of awkward optionals and unwrap them in weird and verbosy ways. I'm not a fan of doing that :)
+Without this syntax, you'd have to create multiple chains of awkward optionals and unwrap them in weird and verbosy ways to access a nested value in a dictionary. I'm not a fan of doing that :)
 
 # Contributions
 
@@ -151,7 +155,7 @@ If you spot something wrong, missing, or if you'd like to propose improvements t
 
 # References
 
-JSEN was heavily based on [Statically-typed JSON payload in Swift](https://jobandtalent.engineering/statically-typed-json-payload-in-swift-bd193a9e8cf2) and other various implementations of this same utility spread throughout Stack Overflow and Swift Forums. I brought everything I needed together in this project because I couldn't something similar as a Swift Package, that had everything I needed.
+JSEN was heavily based on [Statically-typed JSON payload in Swift](https://jobandtalent.engineering/statically-typed-json-payload-in-swift-bd193a9e8cf2) and other various implementations of this same utility spread throughout Stack Overflow and Swift Forums. I brought everything I needed together in this project because I couldn't find something similar as a Swift Package that had everything I needed.
 
 # License
 
