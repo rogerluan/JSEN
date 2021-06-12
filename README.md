@@ -103,7 +103,7 @@ To illustrate the possible problems around an `%optionalValue` operation, pictur
 
 ```swift
 let request: [String:JSEN] = [
-"middle_name": %optionalString
+    "middle_name": %optionalString
 ]
 
 network.put(request)
