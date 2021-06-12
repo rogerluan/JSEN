@@ -12,6 +12,8 @@
   <a href="https://github.com/rogerluan/JSEN/releases/latest">
     <img src="https://img.shields.io/github/v/release/rogerluan/JSEN?sort=semver" alt="Latest release" />
   </a>
+  
+  <a href="https://codeclimate.com/github/rogerluan/JSEN/maintainability"><img src="https://api.codeclimate.com/v1/badges/e78e3c33607e8575b1e8/maintainability" /></a>
 </p>
 
 > _/ˈdʒeɪsən/ JAY-sən_
