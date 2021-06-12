@@ -1,7 +1,7 @@
 # JSEN
 
 <p>
-  <a href="/actions?query=workflow%3Arun_tests">
+  <a href="https://github.com/rogerluan/JSEN/actions/workflows/run_tests.yml">
     <img src="/workflows/run_tests/badge.svg" alt="GitHub Action Build Status" />
   </a>
   <a href="https://swift.org">
@@ -9,7 +9,7 @@
   </a>
   <img src="https://img.shields.io/static/v1?label=Platforms&message=iOS%20|%20macOS%20|%20tvOS%20|%20watchOS%20|%20Ubuntu%20&color=brightgreen" alt="Supports iOS, macOS, tvOS, watchOS and Ubuntu" />
 
-  <a href="releases/latest">
+  <a href="https://github.com/rogerluan/JSEN/releases/latest">
     <img src="https://img.shields.io/github/v/release/rogerluan/JSEN?sort=semver" alt="Latest release" />
   </a>
 </p>
