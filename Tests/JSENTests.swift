@@ -20,7 +20,7 @@ final class JSENTests : XCTestCase {
     }
 
     func test_decodeAsType_withValidTypeFromDictionary_shouldDecode() {
-        let jsen = JSEN.dictionary([ "key" : "value"])
+        let jsen = JSEN.dictionary(["key" : "value"])
         let decoded = jsen.decode(as: Model.self)
         XCTAssertEqual(decoded?.key, "value")
     }
@@ -32,7 +32,7 @@ final class JSENTests : XCTestCase {
     }
 
     func test_decodeAsType_withInvalidType_shouldReturnNil() {
-        let jsen = JSEN.dictionary(["wrong_key": "value"])
+        let jsen = JSEN.dictionary(["wrong_key" : "value"])
         let decoded = jsen.decode(as: Model.self, dumpingErrorOnFailure: true)
         XCTAssertNil(decoded)
     }
@@ -46,5 +46,48 @@ final class JSENTests : XCTestCase {
         XCTAssertEqual(JSEN.array(["some array", "2nd element"]).description, #"["some array", "2nd element"]"#)
         XCTAssertEqual(JSEN.dictionary(["my_key" : "my_value"]).description, #"["my_key": "my_value"]"#)
         XCTAssertEqual(JSEN.null.description, "null")
+    }
+
+    func test_initializer_withFlatValues_shouldMatchTheExpectedValues() {
+        let int: Any? = 42
+        XCTAssertEqual(JSEN(from: int), .int(42))
+        let double: Any? = 42.42
+        XCTAssertEqual(JSEN(from: double), .double(42.42))
+        let string: Any? = "testing"
+        XCTAssertEqual(JSEN(from: string), .string("testing"))
+        let bool: Any? = true
+        XCTAssertEqual(JSEN(from: bool), .bool(true))
+        let array: Any? = [ 42 ]
+        XCTAssertEqual(JSEN(from: array), .array([42]))
+        let dictionary: Any? = [ "key" : 42 ]
+        XCTAssertEqual(JSEN(from: dictionary), .dictionary(["key" : 42]))
+    }
+
+    func test_initializer_withNestedValues_shouldSucceed() {
+        let array: Any? = [
+            42,
+            "42",
+            true,
+            [
+                24,
+                "24",
+                false,
+            ],
+        ]
+        XCTAssertNotNil(JSEN(from: array))
+        let dictionary: Any? = [
+            "key" : 42,
+            "another" : true,
+            "nested" : [
+                "key" : true,
+                "another" : "yes",
+                "bool" : false,
+                "double" : 3.14,
+                "3rd" : [
+                    "yup" : "it works",
+                ]
+            ]
+        ]
+        XCTAssertNotNil(JSEN(from: dictionary))
     }
 }
