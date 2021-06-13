@@ -19,7 +19,7 @@ public enum JSEN : Equatable {
     case null
 
     /// Attempts to initialize a JSEN instance from an `Any?` value.
-    init?(from anyValue: Any?) {
+    public init?(from anyValue: Any?) {
         switch anyValue {
         case let int as Int: self = .int(int)
         case let double as Double: self = .double(double)
