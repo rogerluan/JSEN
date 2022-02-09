@@ -31,6 +31,7 @@ public enum JSEN : Equatable {
         case let dictionary as [String:Any]:
             let jsenElements: [String:JSEN] = dictionary.compactMapValues { JSEN(from: $0) }
             self = .dictionary(jsenElements)
+        case let jsen as JSEN: self = jsen
         default: return nil
         }
     }
