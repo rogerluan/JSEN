@@ -61,6 +61,8 @@ final class JSENTests : XCTestCase {
         XCTAssertEqual(JSEN(from: array), .array([42]))
         let dictionary: Any? = [ "key" : 42 ]
         XCTAssertEqual(JSEN(from: dictionary), .dictionary(["key" : 42]))
+        let jsen: Any? = JSEN.int(42)
+        XCTAssertEqual(JSEN(from: jsen), .int(42))
     }
 
     func test_initializer_withNestedValues_shouldSucceed() {
