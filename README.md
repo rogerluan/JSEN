@@ -99,7 +99,7 @@ let request: [String:JSEN] = [
 
 Enters the…
 
-### `%` Suffix Operator
+### `%` Prefix Operator
 
 ```swift
 let request: [String:JSEN] = [
@@ -107,7 +107,7 @@ let request: [String:JSEN] = [
 ]
 ```
 
-The custom `%` suffix operator transforms any `Int`, `Double`, `String`, `Bool`, `[JSEN]` and `[String:JSEN]` values into its respective JSEN value.
+The custom `%` prefix operator transforms any `Int`, `Double`, `String`, `Bool`, `[JSEN]` and `[String:JSEN]` values into its respective JSEN value.
 
 
 By design, no support was added to transform `Optional` into a `.null` to prevent misuse.
