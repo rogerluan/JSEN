@@ -74,4 +74,22 @@ final class KeyPathTests : XCTestCase {
         let keyPath = KeyPath(path)
         XCTAssertEqual(keyPath.path, path)
     }
+
+    func test_description_whenSegmentIsEmpty_shouldReturnEmptyString() {
+        XCTAssertEqual(KeyPath(""), "")
+    }
+
+    func test_description_whenSegmentHasOneElement_shouldReturnThatElement() {
+        XCTAssertEqual(KeyPath("element"), "element")
+    }
+
+    func test_description_whenSegmentHasTwoElements_shouldReturnStringSeparatedByPeriod() {
+        XCTAssertEqual(KeyPath("my.name"), "my.name")
+    }
+
+    func test_pathAppending_whenPathIsValid_shouldReturnAppendedPathsUsingPeriod() {
+        let lhs = "this.is.path.start"
+        let rhs = "this.is.path.end"
+        XCTAssertEqual(KeyPath(lhs) + KeyPath(rhs), "this.is.path.start.this.is.path.end")
+    }
 }
