@@ -5,17 +5,17 @@ import Foundation
 /// Simple struct used to represent multiple segments of a string.
 /// This is a utility used to recursively access values in nested dictionaries.
 public struct KeyPath {
-    var segments: [String]
+    public var segments: [String]
 
-    var isEmpty: Bool { return segments.isEmpty }
-    var path: String {
+    public var isEmpty: Bool { return segments.isEmpty }
+    public var path: String {
         return segments.joined(separator: ".")
     }
 
     /// Strips off the first segment and returns a pair
     /// consisting of the first segment and the remaining key path.
     /// Returns nil if the key path has no segments.
-    func headAndTail() -> (head: String, tail: KeyPath)? {
+    public func headAndTail() -> (head: String, tail: KeyPath)? {
         guard !isEmpty else { return nil }
         var tail = segments
         let head = tail.removeFirst()
