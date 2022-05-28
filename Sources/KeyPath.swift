@@ -4,7 +4,7 @@ import Foundation
 
 /// Simple struct used to represent multiple segments of a string.
 /// This is a utility used to recursively access values in nested dictionaries.
-public struct KeyPath {
+public struct KeyPath: Hashable {
     public var segments: [String]
 
     public var isEmpty: Bool { return segments.isEmpty }
@@ -38,6 +38,18 @@ public extension KeyPath {
 extension KeyPath: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         self.init(value)
+    }
+}
+
+extension KeyPath: CustomStringConvertible {
+    public var description: String {
+        return segments.joined(separator: ".")
+    }
+}
+
+public extension KeyPath {
+    static func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
+        return KeyPath(lhs.description + "." + rhs.description)
     }
 }
 
