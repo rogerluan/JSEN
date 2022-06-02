@@ -86,7 +86,7 @@ public extension Dictionary where Key == String {
                 // Reached the end of the key path.
                 self[head] = newValue as? Value
             case let (head, remainingKeyPath)?:
-                let value = self[head]
+                let value: Any = self[head] ?? [:]
                 if var nestedDictionary = value as? [Key:Any] {
                     // Key path has a tail we need to traverse
                     nestedDictionary[keyPath: remainingKeyPath] = newValue
