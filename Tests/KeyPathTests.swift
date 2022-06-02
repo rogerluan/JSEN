@@ -92,4 +92,11 @@ final class KeyPathTests : XCTestCase {
         let rhs = "this.is.path.end"
         XCTAssertEqual(KeyPath(lhs) + KeyPath(rhs), "this.is.path.start.this.is.path.end")
     }
+
+    func test_writingToEmptyDictionary() throws {
+        let data = "this is my data"
+        var dictionary: [String:Any] = [:]
+        dictionary[keyPath: "nested.data"] = data
+        XCTAssertEqual(dictionary[keyPath: "nested.data"] as? String, data)
+    }
 }
