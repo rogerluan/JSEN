@@ -20,7 +20,7 @@
 
 JSEN (JSON Swift Enum Notation) is a lightweight enum representation of a JSON, written in Swift.
 
-A JSON, as defined in the [ECMA-404 standard](https://www.json.org) , can be:
+A JSON, as defined in the [ECMA-404 standard](https://www.json.org), can be:
 
 - A number
 - A boolean
@@ -30,6 +30,10 @@ A JSON, as defined in the [ECMA-404 standard](https://www.json.org) , can be:
 - A dictionary of those things
 
 Thus, JSONs can be represented as a recursive enum (or `indirect enum`, in Swift), effectively creating a statically-typed JSON payload in Swift.
+
+# Why would I use this?
+
+This is the type safe version of the infamous `[String:Any]` that is present everywhere in your codebase, to represent JSONs. If you love Swift, this should be enough of an argument already 😉 If not, keep reading to discover all the syntactic sugar present in this simple enum!
 
 # Installation
 
