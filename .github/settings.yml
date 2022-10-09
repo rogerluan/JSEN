@@ -1,4 +1,4 @@
-# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+# These settings are synced to GitHub by https://probot.github.io/apps/settings
 
 _extends: .github # https://github.com/rogerluan/.github
 
