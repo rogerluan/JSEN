@@ -115,7 +115,6 @@ let request: [String:JSEN] = [
 
 The custom `%` prefix operator transforms any `Int`, `Double`, `String`, `Bool`, `[JSEN]` and `[String:JSEN]` values into its respective JSEN value.
 
-
 By design, no support was added to transform `Optional` into a `.null` to prevent misuse.
 
 <details><summary>Click here to expand the reason why it could lead to mistakes</summary>
